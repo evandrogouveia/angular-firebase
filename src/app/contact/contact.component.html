@@ -1,0 +1,54 @@
+<mat-card-header>
+  <mat-toolbar class="toolbar">
+    <mat-card-title>Novo Cadastro</mat-card-title>
+    <span class="toolbar-spacer"></span>
+    <mat-icon (click)="onNoClick()">cancel</mat-icon>
+  </mat-toolbar>
+</mat-card-header><br>
+<mat-card-content>
+  <div class="container">
+    <form [formGroup]="angForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Nome</label>
+            <input type="text" [(ngModel)]="this.contact.Nome" class="form-control" name="Nome" formControlName="nome">
+            <div *ngIf="angForm.controls['nome'].invalid && (angForm.controls['nome'].dirty || angForm.controls['nome'].touched)" class="alert alert-danger">
+                <div *ngIf="angForm.controls['nome'].errors.required">
+                  Favor Inserir <strong>Nome</strong>.
+                </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+            <label>Data</label>
+            <input type="date" [(ngModel)]="this.contact.Data" class="form-control" name="Data" formControlName="data">
+            <div *ngIf="angForm.controls['data'].invalid && (angForm.controls['data'].dirty || angForm.controls['data'].touched)" class="alert alert-danger">
+                <div *ngIf="angForm.controls['data'].errors.required">
+                 Favor Inserir <strong>Data</strong>.
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Descrição</label>
+            <textarea type="text" [(ngModel)]="this.contact.Descricao" class="form-control" name="Descricao" formControlName="descricao"></textarea>
+            <div *ngIf="angForm.controls['descricao'].invalid && (angForm.controls['descricao'].dirty || angForm.controls['descricao'].touched)" class="alert alert-danger">
+                <div *ngIf="angForm.controls['descricao'].errors.required">
+                  Favor Inserir <strong>Descrição</strong>.
+                </div>
+            </div>
+          </div>
+        </div><br>
+
+        <div class="row">
+          <div class="col-md-6">
+            <button [disabled]="angForm.pristine || angForm.invalid" type="submit" class="btn btn-success">Salvar</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</mat-card-content>
+

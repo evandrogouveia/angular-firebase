@@ -1,0 +1,27 @@
+    <mat-card-header>
+      <mat-toolbar class="toolbar">
+        <mat-card-title>FIREBASE CADASTRO</mat-card-title>
+        <span class="toolbar-spacer"></span>
+        <mat-icon (click)="addContact()">add</mat-icon>
+      </mat-toolbar>
+    </mat-card-header>
+   
+      <div class="container-fluid">
+        <table class="table">
+          <thead>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Descrição</th>
+          </thead>
+          <tr *ngFor="let Contact of contacts | async">
+            <td>{{Contact.Nome}}</td>
+            <td>{{Contact.Data | date:'dd/MM/yyyy' }}</td>
+            <td>{{Contact.Descricao}}</td>
+            <td><mat-icon (click)="editContact(Contact, Contact.key)">edit</mat-icon></td>
+            <td><mat-icon (click)="deleteContact(Contact.key)">delete</mat-icon></td>
+          </tr>
+        </table>
+
+        
+      </div>
+      
